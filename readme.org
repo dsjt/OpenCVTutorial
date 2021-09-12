@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+* 概要
+OpenCV-Pythonのチュートリアル文書を読み進める。
+[[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/index.html][OpenCV-Python チュートリアル文書のページへようこそ! — OpenCV-Python Tutorials 1 documentation]]
+
+役に立ちそうな例については、身近な問題を想定したデモを作成する。
+
+* トピック
+
+1. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup][OpenCVへの導入]]
+2. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_gui/py_table_of_contents_gui/py_table_of_contents_gui.html#py-table-of-content-gui][OpenCVのGUI機能]]
+3. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_core/py_table_of_contents_core/py_table_of_contents_core.html#py-table-of-content-core][基本的な処理]]
+4. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_table_of_contents_imgproc/py_table_of_contents_imgproc.html#py-table-of-content-imgproc][OpenCVを使った画像処理]]
+5. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_feature2d/py_table_of_contents_feature2d/py_table_of_contents_feature2d.html#py-table-of-content-feature2d][特徴量検出と特徴量記述]]
+6. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_video/py_table_of_contents_video/py_table_of_contents_video.html#py-table-of-content-video][動画解析]]
+7. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_calib3d/py_table_of_contents_calib3d/py_table_of_contents_calib3d.html#py-table-of-content-calib][カメラキャリブレーションと3次元復元]]
+8. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_ml/py_table_of_contents_ml/py_table_of_contents_ml.html#py-table-of-content-ml][機械学習]]
+9. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_photo/py_table_of_contents_photo/py_table_of_contents_photo.html#py-table-of-content-photo][Computational Photography]]
+10. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_objdetect/py_table_of_contents_objdetect/py_table_of_contents_objdetect.html#py-table-of-content-objdetection][物体検出]]
+11. [[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_bindings/py_table_of_contents_bindings/py_table_of_contents_bindings.html#py-table-of-content-bindings][OpenCV-Pythonの紐づけ(bindings)]]

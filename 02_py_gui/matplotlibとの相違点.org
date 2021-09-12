@@ -1,0 +1,10 @@
+OpenCVは色をBGRの順で保持する。一方、matplotlibはRGBの順で保持する。したがって、一方で読み込んだカラー画像をもう一方で出力すると、色合いが変わる。
+
+これを回避するためには、単に次でよい。
+#+BEGIN_SRC python
+img2 = img[:,:,::-1]
+#+END_SRC
+
+#+BEGIN_SRC python
+cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+#+END_SRC

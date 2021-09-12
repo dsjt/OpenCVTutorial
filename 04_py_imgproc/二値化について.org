@@ -1,0 +1,78 @@
+# -*- coding: utf-8 -*-
+* 概要
+二値化にまつわるトピックに言及する。
+
+[[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_thresholding/py_thresholding.html#thresholding][画像のしきい値処理 — OpenCV-Python Tutorials 1 documentation]]
+* 二値化手法の種類と選び方
+
+- 単純な二値化 :: 値を一つ決め、二値化を行う。基本的にこれを採用して良い。
+- 大津の二値化 :: 値を一つ決め、二値化を行うが、値は自動決定する。輝度ヒストグラムが二峰性であるとき、これを採用する。
+- 適応的しきい値処理 :: 局所的に値を自動決定し、二値化を行う。画像の明度が局所的に異なるとき、この二値化を採用する。
+
+
+* 単純な二値化
+
+*TODO* 画像を繊維束を模したグレースケール画像に置き換える。
+
+#+BEGIN_SRC python
+  import cv2 as cv
+  import matplotlib.pyplot as plt
+  img = cv.imread('data/oden.png', 0)
+  ret, thresh1 = cv.threshold(img, 127, 255, cv.THRESH_BINARY)
+  plt.subplot(1, 2, 1), plt.imshow(img, 'gray')
+  plt.xticks([]), plt.yticks([]), plt.title('Original')
+  plt.subplot(1, 2, 2), plt.imshow(thresh1, 'gray')
+  plt.xticks([]), plt.yticks([]), plt.title('Binary')
+  plt.savefig('data/oden_binary.png')
+#+END_SRC
+
+
+* 大津の二値化
+
+*TODO* 画像を繊維束を模したグレースケール画像に置き換える。できれば輝度分布が繊維束と背景で二峰性となることが望ましい。
+
+#+BEGIN_SRC python
+  import cv2 as cv
+  import matplotlib.pyplot as plt
+  img = cv.imread('data/oden.png', 0)
+  ret, thresh1 = cv.threshold(img, 0, 255, cv.THRESH_BINARY|cv.THRESH_OTSU)
+  plt.subplot(2, 2, 1), plt.imshow(img, 'gray')
+  plt.xticks([]), plt.yticks([]), plt.title('Original')
+  plt.subplot(2, 2, 2), plt.imshow(thresh1, 'gray')
+  plt.xticks([]), plt.yticks([]), plt.title('Otsu')
+  plt.subplot(2, 1, 2), plt.hist(img.ravel(), bins=32)
+  plt.savefig('data/oden_otsu.png')
+#+END_SRC
+
+大津の二値化は輝度ヒストグラムにおいて2つの分布を仮定し、それらの分散が最小化するようなしきい値を選択する。式中のP(i)は輝度iを取る画素の個数のこと。
+
+\begin{align}
+ q_1(t) &= \sum_{i=1}^{t} P(i),&
+ q_2(t) &= \sum_{i=t+1}^{I} P(i) \\
+ \mu_1(t) &= \sum_{i=1}^t \frac{i P(i)}{q_1(t)},&
+ \mu_2(t) &= \sum_{i=t+1}^{I} \frac{i P(i)}{q_2(t)}\\
+ \sigma_1^2(t) &= \sum_{i=1}^{t} [i-\mu_1(t)]^2 \frac{P(i)}{q_1(t)},&
+ \sigma_2^2(t) &= \sum_{i=t+1}^{I} [i-\mu_2(t)]^2 \frac{P(i)}{q_2(t)}\\
+\end{align}
+\begin{equation}
+ \mbox{Argmin: } \sigma_w^{2}(t) = q_1(t)\sigma_1^2(t) + q_2(t) \sigma_2^2(t)
+\end{equation}
+
+
+* 適応的しきい値処理
+
+*TODO* 画像を繊維束を模したグレースケール画像に置き換える。画像全体にグラデーションを加え、単純な二値化ができない例を作成する。
+
+画像の小領域ごとのしきい値を計算する。
+
+#+BEGIN_SRC python
+  import cv2 as cv
+  import matplotlib.pyplot as plt
+  img = cv.imread('data/oden.png', 0)
+  thresh1 = th2 = cv.adaptiveThreshold(img, 255, cv.ADAPTIVE_THRESH_MEAN_C,
+                                       cv.THRESH_BINARY, 11, 2)
+  plt.subplot(1, 2, 1), plt.imshow(img, 'gray')
+  plt.xticks([]), plt.yticks([]), plt.title('Original')
+  plt.subplot(1, 2, 2), plt.imshow(thresh1, 'gray')
+  plt.xticks([]), plt.yticks([]), plt.title('Adaptive')
+#+END_SRC

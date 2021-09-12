@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+* 概要
+モルフォロジー変換について言及する。
+
+[[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html#morphological-ops][モルフォロジー変換 — OpenCV-Python Tutorials 1 documentation]]
+
+* モルフォロジー変換
+
+二値画像を対象として、注目画素とその周辺画素のみの情報から、注目画素の色を再決定
+する。例えば、周辺画素内に一つでも黒を含めば黒、そうでなければ白、というように色
+を再決定すれば、画像の白領域が狭くなる。このような処理をまとめてモルフォロジー変
+換と呼ぶ。
+
+効果として小さな点状のノイズを削除することが期待できる。blurなどのようにノイズを
+緩和するのではなく消し去ることができる。問題によって適切な処理は変わるため、入出
+力をよく観察してノイズ処理方法を選ぶ必要がある。
+
+
+* 例
+*TODO* 繊維束を模した画像を用意して画像処理の例を作成する。
+
+** 収縮
+
+** 膨張
+
+** オープニング
+収縮→膨張
+
+** クロージング
+膨張→収縮
+
+** モルフォロジー勾配
+膨張-収縮
+
+** トップハット変換
+オープニング-元画像
+オープニングで消える部分を可視化する
+
+** ブラックハット変換
+クロージング-入力画像
+クロージングで消える部分を可視化する
+
+
+* 構造的要素の作り方
+
+モルフォロジー変換の注目画素周辺の対象領域を決定する行列は、カーネルと呼ばれる。
+手で構成しても良いし、関数を使って生成することもできる。
+#+BEGIN_SRC python
+print(cv.getStructuringElement(cv.MORPH_RECT, (5, 5)))
+print(cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5)))
+print(cv.getStructuringElement(cv.MORPH_CROSS, (5, 5)))
+#+END_SRC

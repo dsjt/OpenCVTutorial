@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+* 概要
+色空間にまつわるトピックに言及する
+* 色の表現 (RGB, GRAY, HSV)
+
+RGBは馴染みのある色の三原色による表現である。
+GRAYはグレースケールによる表現である。
+HSVは色ありの表現で1画素あたり3要素からなり、[色相、彩度、明度]を意味する。
+
+** HSV
+
+#+begin_quote
+- 色相 :: 色の種類（例えば、赤、青、黄色）
+- 彩度 :: 色の鮮やかさ
+- 明度 :: 色の明るさ
+#+end_quote
+[[https://ja.wikipedia.org/wiki/HSV%E8%89%B2%E7%A9%BA%E9%96%93][HSV色空間 - Wikipedia]]
+
+* 色変換
+
+BGR -> GRAY
+#+BEGIN_SRC python
+hsv = cv.cvtColor(x, cv.COLOR_BGR2GRAY)
+#+END_SRC
+
+BGR -> HSV
+#+BEGIN_SRC python
+hsv = cv.cvtColor(x, cv.COLOR_BGR2HSV)
+#+END_SRC
+
+
+** この色のHSV表現を調べる
+
+RGB表現の赤は、HSV表現では？
+#+BEGIN_SRC python
+red = np.uint8([[[255, 0, 0]]])
+hsv_red = cv.cvtColor(red, cv.COLOR_RGB2HSV)
+print(hsv_red)
+#+END_SRC

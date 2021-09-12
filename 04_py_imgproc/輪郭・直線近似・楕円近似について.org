@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+* 概要
+領域（輪郭）の特徴に関するトピックに言及する。
+[[http://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_contours/py_contour_features/py_contour_features.html#contour-features][領域(輪郭)の特徴 — OpenCV-Python Tutorials 1 documentation]]
+
+* 輪郭の取得と近似
+グレースケール画像から何かを取り出す例
+
+* 楕円近似
+
+* 直線近似
